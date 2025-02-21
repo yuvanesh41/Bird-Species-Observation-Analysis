@@ -5,51 +5,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import base64
-import psycopg2
-
-st.title("Bird Monitoring Data Visualization")
-st.subheader("This application is a Streamlit dashboard to visualize bird monitoring data.")
-
-# Database connection details
-def connect_db():
-    return psycopg2.connect(
-        host='localhost',
-        user='postgres',
-        password='vijay45',
-        database='birds_analytics'
-    )
-
 
 # Set page config
 st.set_page_config(page_title="🦅🦆Bird Monitoring Dashboard🦉🐦", layout="wide")
 
-# ## Encode the local image file to base64
-# def get_base64(bin_file):
-#     with open(bin_file, 'rb') as f:
-#         data = f.read()
-#     return base64.b64encode(data).decode()
-
-# # Set the background image using the encoded base64 string
-# def set_background(png_file, opacity=0.5):
-#     bin_str = get_base64(png_file)
-#     page_bg_img = f'''
-#     <style>
-#     .stApp {{
-#         background-image: url("data:image/png;base64,{bin_str}");
-#         background-size: cover;
-#         background-repeat: no-repeat;
-#         background-attachment: overlay;
-#         opacity: {opacity};
-#     }}
-#     </style>
-#     '''
-#     st.markdown(page_bg_img, unsafe_allow_html=True)
-
-# # Path to your local image file
-# image_path = 'D:\\MTDM37\\Guvi\\DS_Birds_EDA\\Scripts_2\\bird.jpg'
-# set_background(image_path, opacity=0.7)
-
-# Load your dataset
 @st.cache_data
 def load_data():
     combined_df = pd.read_csv(r'C:\Users\aswin\3D Objects\guvi_project\Brid-species-observation-analysis\combined_data_cleaned.csv', low_memory=False)
